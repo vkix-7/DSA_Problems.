@@ -20,17 +20,16 @@ public class Valid_Anagram {
         }
         return true;
         }
-
-public static void main(String args[])  
-{ 
-  String s = "anagram";
+    }
+public static void main(String args[]) { 
+ 
+   String s = "anagram";
    String t = "nagaram";
-    if (isAnagram (s , t)) 
+if(isAnagram(s , t)) 
             System.out.println("The two strings are"
                                + " anagram of each other"); 
         else
             System.out.println("The two strings are not"
                                + " anagram of each other"); 
     } 
-  
-}
+
