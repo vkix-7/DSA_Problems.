@@ -1,0 +1,29 @@
+class Solution {
+    public int maxProductDifference(int[] nums) {
+        int firstBig = 0, secondBig = 0;
+        int firstSmall = Integer.MAX_VALUE, secondSmall = Integer.MAX_VALUE;
+
+        for (int n : nums) {
+            if (n < firstSmall) {
+                secondSmall = firstSmall;
+                firstSmall = n;
+            } else if (n < secondSmall) {
+                secondSmall = n;
+            }
+
+            if (n > firstBig) {
+                secondBig = firstBig;
+                firstBig = n;
+            } else if (n > secondBig) {
+                secondBig = n;
+            }
+        }
+
+        return firstBig * secondBig - firstSmall * secondSmall;        
+    }
+}
+
+/*Input: nums = [5,6,2,7,4]
+Output: 34
+Explanation: We can choose indices 1 and 3 for the first pair (6, 7) and indices 2 and 4 for the second pair (2, 4).
+The product difference is (6 * 7) - (2 * 4) = 34.*/
