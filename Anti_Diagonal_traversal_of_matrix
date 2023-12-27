@@ -1,0 +1,44 @@
+/*Give a N*N square matrix, return an array of its anti-diagonals in top-leftmost to bottom-rightmost order. 
+In an element of a anti-diagonal (i, j), surrounding elements will be (i+1, j-1) and (i-1, j+1).
+ Look at the examples for more clarity.*/
+Input:
+N = 3
+matrix[][] = 3 2 3
+            4 5 1
+            7 8 9
+Output:
+3 2 4 3 5 7 1 8 9
+*/
+class Solution
+{
+    public int[] antiDiagonalPattern(int[][] matrix)
+    {
+        // Code here
+        int n=matrix.length;
+        int m=matrix[0].length;
+        ArrayList<Integer> ans=new ArrayList<>();
+        int row=0;
+        int col=0;
+        while(row<n && col<m){
+            int i=row;
+            int j=col;
+            while(i<n && j>=0){
+                ans.add(matrix[i][j]);
+                i++;
+                j--;
+            }
+            if(col<m-1){
+                col++;
+            }else{
+                row++;
+            }
+        }
+        int[] ret = new int[ans.size()];
+        for (int i=0; i < ret.length; i++)
+        {
+            ret[i] = ans.get(i).intValue();
+        }
+        return ret;
+
+    }
+}
