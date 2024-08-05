@@ -1,0 +1,30 @@
+//You are given timings of n meetings in the form of (start[i], end[i]) where start[i] is the start time of meeting i and end[i] is the finish time of meeting i. Return the maximum number of meetings that can be accommodated in a single meeting room, when only one meeting can be held in the meeting room at a particular time. 
+
+//Note: The start time of one chosen meeting can't be equal to the end time of the other chosen meeting.//
+
+
+
+
+
+class Solution {
+  public:
+    // Function to find the maximum number of meetings that can
+    // be performed in a meeting room.
+    int maxMeetings(int n, int start[], int end[]) {
+     vector<pair<int,int>>v;
+     for(int i =0;i<n;i++ ){
+         v.push_back({end[i],start[i]});
+     }
+     sort(v.begin(),v.end());
+     int count =1 ;
+     int last = v[0].first ; 
+     for(int i = 1;i<n;i++){
+         if(v[i].second>last){
+             count++;
+             last = v[i].first;
+         }
+     }
+     return count;
+        // Your code here
+    }
+};
